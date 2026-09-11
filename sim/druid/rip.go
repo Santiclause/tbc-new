@@ -48,14 +48,7 @@ func (druid *Druid) registerRipSpell() {
 				ap := dot.Spell.MeleeAttackPower(target)
 
 				var tickDamage float64
-				switch {
-				case cp <= 3:
-					tickDamage = 990 + 0.18*ap
-				case cp == 4:
-					tickDamage = 1272 + 0.24*ap
-				default: // 5
-					tickDamage = 1554 + 0.24*ap
-				}
+				tickDamage = 426 + 282*cp + 0.06*min(cp, 4)*ap
 				tickDamage = tickDamage/6 + idolBonus(cp)
 
 				dot.SnapshotPhysical(target, tickDamage)
